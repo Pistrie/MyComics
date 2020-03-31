@@ -1,5 +1,10 @@
 package CRUD;
 
 public class Read {
-    //test
+    String mysql = """
+            SELECT *
+            FROM comics
+            WHERE title = :title
+            OR title = null
+            """;
 }
