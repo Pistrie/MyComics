@@ -27,8 +27,8 @@ public class Read {
                 myStmt.setNull(1, Types.NVARCHAR);
                 myStmt.setNull(2, Types.NVARCHAR);
             } else {
-                myStmt.setString(1, filter);
-                myStmt.setString(2, filter);
+                myStmt.setString(1, this.filter);
+                myStmt.setString(2, this.filter);
             }
 
             // execute sql query
