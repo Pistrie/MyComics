@@ -52,11 +52,6 @@ public class Read {
                     myStmt.close();
                 } catch (SQLException e) { /* ignored */}
             }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) { /* ignored */}
-            }
         }
     }
 }

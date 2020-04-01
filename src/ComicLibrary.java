@@ -11,8 +11,8 @@ public class ComicLibrary {
     private static final String DB_PASSWORD = "rootpassword";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/comics";
 
-    private static Connection connection = null;
-    static{
+    private Connection connection = null;
+    {
         try {
             Class.forName(DB_DRIVER_CLASS);
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -21,10 +21,17 @@ public class ComicLibrary {
         }
     }
 
-    //Read read = new Read(connection, "Dirkjan");
-    Update update = new Update(connection, 8, 2);
+    Read read = new Read(connection, "Dirkjan");
 
-    public static Connection getConnection(){
+    public Connection getConnection(){
         return connection;
+    }
+
+    public void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) { /* ignored */}
+        }
     }
 }
