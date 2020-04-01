@@ -1,4 +1,5 @@
 import CRUD.Read;
+import CRUD.Update;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +21,8 @@ public class ComicLibrary {
         }
     }
 
-    Read read = new Read(connection, "Dirkjan");
+    //Read read = new Read(connection, "Dirkjan");
+    Update update = new Update(connection, 8, 2);
 
     public static Connection getConnection(){
         return connection;

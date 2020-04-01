@@ -3,12 +3,8 @@ package CRUD;
 import java.sql.*;
 
 public class Read {
-    private Connection conn;
-    private String filter;
 
     public Read(Connection conn, String filter) {
-        this.conn = conn;
-        this.filter = filter;
         PreparedStatement myStmt = null;
         ResultSet myRs = null;
 
@@ -18,7 +14,7 @@ public class Read {
                 SELECT *
                 FROM comics
                 WHERE title = ?
-                OR ? IS NULL
+                OR ? IS NULL;
                 """);
 
             // set parameters
@@ -27,8 +23,8 @@ public class Read {
                 myStmt.setNull(1, Types.NVARCHAR);
                 myStmt.setNull(2, Types.NVARCHAR);
             } else {
-                myStmt.setString(1, this.filter);
-                myStmt.setString(2, this.filter);
+                myStmt.setString(1, filter);
+                myStmt.setString(2, filter);
             }
 
             // execute sql query
@@ -56,9 +52,9 @@ public class Read {
                     myStmt.close();
                 } catch (SQLException e) { /* ignored */}
             }
-            if (this.conn != null) {
+            if (conn != null) {
                 try {
-                    this.conn.close();
+                    conn.close();
                 } catch (SQLException e) { /* ignored */}
             }
         }
