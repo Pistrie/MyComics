@@ -1,3 +1,5 @@
+package Comic;
+
 public class Comic {
     private String title;
     private int publication_number;
@@ -13,5 +15,29 @@ public class Comic {
         this.publication_year = publication_year;
         this.publisher = publisher;
         this.isbn = isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getPublication_number() {
+        return publication_number;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getPublication_year() {
+        return publication_year;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public int getIsbn() {
+        return isbn;
     }
 }

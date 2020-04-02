@@ -1,16 +1,16 @@
 package CRUD;
 
 import java.sql.*;
+import Comic.Comic;
 
 public class Update {
 
-    public Update(Connection conn, String newTitle, int newPn, String newGenre, int newPy, String newPub, int newIsbn,
-                  String oldTitle, int oldPn, String oldGenre, int oldPy, String oldPub, int oldIsbn) {
+    public Update(Connection connection, Comic newComic, Comic oldComic) {
         PreparedStatement myStmt = null;
 
         try {
             // prepare statement
-            myStmt = conn.prepareStatement("""
+            myStmt = connection.prepareStatement("""
                 UPDATE comics_copy
                 SET title = ?, publication_number = ?, genre = ?, publication_year = ?, publisher = ?, isbn = ?
                 WHERE title = ? AND publication_number = ? AND genre = ? AND publication_year = ?
@@ -19,18 +19,18 @@ public class Update {
 
             // set parameters
             System.out.println("This is where the user would type the filter");
-            myStmt.setString(1, newTitle);
-            myStmt.setInt(2, newPn);
-            myStmt.setString(3, newGenre);
-            myStmt.setInt(4, newPy);
-            myStmt.setString(5, newPub);
-            myStmt.setInt(6, newIsbn);
-            myStmt.setString(7, oldTitle);
-            myStmt.setInt(8, oldPn);
-            myStmt.setString(9, oldGenre);
-            myStmt.setInt(10, oldPy);
-            myStmt.setString(11, oldPub);
-            myStmt.setInt(12, oldIsbn);
+            myStmt.setString(1, newComic.getTitle());
+            myStmt.setInt(2, newComic.getPublication_number());
+            myStmt.setString(3, newComic.getGenre());
+            myStmt.setInt(4, newComic.getPublication_year());
+            myStmt.setString(5, newComic.getPublisher());
+            myStmt.setInt(6, newComic.getIsbn());
+            myStmt.setString(7, oldComic.getTitle());
+            myStmt.setInt(8, oldComic.getPublication_number());
+            myStmt.setString(9, oldComic.getGenre());
+            myStmt.setInt(10, oldComic.getPublication_year());
+            myStmt.setString(11, oldComic.getPublisher());
+            myStmt.setInt(12, oldComic.getIsbn());
 
             // execute sql query
             myStmt.executeUpdate();
