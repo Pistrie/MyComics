@@ -1,4 +1,5 @@
 import CRUD.Create;
+import CRUD.Delete;
 import CRUD.Read;
 import CRUD.Update;
 import Comic.Comic;
@@ -55,7 +56,11 @@ public class ComicLibrary {
                         Update update = new Update(connection, newComic, oldComic);
                     }
                     // delete
-                    case "4" -> System.out.println("Not yet supported");
+                    case "4" -> {
+                        System.out.println("Enter all the details of the comic you want to delete:");
+                        Comic comic = enterAllDetails();
+                        Delete delete = new Delete(connection, comic);
+                    }
                     // stop
                     case "5" -> running = false;
                     default -> System.out.println("Please enter a valid option.");
