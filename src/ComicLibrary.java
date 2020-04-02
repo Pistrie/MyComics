@@ -29,15 +29,19 @@ public class ComicLibrary {
                     System.out.println(option);
                 }
                 String option = reader.nextLine();
-                if ("1".equals(option)) {
+                if ("1".equals(option)) { // create
                     System.out.println("Not yet supported");
-                } else if ("2".equals(option)) {
+                } else if ("2".equals(option)) { // read
                     System.out.println("noted");
-                } else if ("3".equals(option)) {
+                    System.out.print("Enter the name of the comic. Leave this empty and press Enter if" +
+                            " you want to see all comics: ");
+                    String title = reader.nextLine();
+                    Read read = new Read(connection, title);
+                } else if ("3".equals(option)) { // update
                     System.out.println("noted");
-                } else if ("4".equals(option)) {
+                } else if ("4".equals(option)) { // delete
                     System.out.println("Not yet supported");
-                } else if ("5".equals(option)) {
+                } else if ("5".equals(option)) { // stop
                     running = false;
                 } else {
                     System.out.println("Please enter a valid option.");
