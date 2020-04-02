@@ -30,26 +30,30 @@ public class ComicLibrary {
                     System.out.println(option);
                 }
                 String option = reader.nextLine();
-                if ("1".equals(option)) { // create
-                    System.out.println("Not yet supported");
-                } else if ("2".equals(option)) { // read
-                    System.out.print("Enter the name of the comic. Leave this empty and press Enter if" +
-                            " you want to see all comics: ");
-                    String title = reader.nextLine();
-                    Read read = new Read(connection, title);
-                } else if ("3".equals(option)) { // update
-                    System.out.println("Enter all the details of the comic you want to update:");
-                    Comic oldComic = enterAllDetails();
-                    System.out.println("Enter all the new details. If some of the details don't need to be " +
-                            "updated you just need to enter the old details again:");
-                    Comic newComic = enterAllDetails();
-                    Update update = new Update(connection, newComic, oldComic);
-                } else if ("4".equals(option)) { // delete
-                    System.out.println("Not yet supported");
-                } else if ("5".equals(option)) { // stop
-                    running = false;
-                } else {
-                    System.out.println("Please enter a valid option.");
+                switch (option) {
+                    // create
+                    case "1" -> System.out.println("Not yet supported");
+                    // read
+                    case "2" -> {
+                        System.out.print("Enter the name of the comic. Leave this empty and press Enter if" +
+                                " you want to see all comics: ");
+                        String title = reader.nextLine();
+                        Read read = new Read(connection, title);
+                    }
+                    // update
+                    case "3" -> {
+                        System.out.println("Enter all the details of the comic you want to update:");
+                        Comic oldComic = enterAllDetails();
+                        System.out.println("Enter all the new details. If some of the details don't need to be " +
+                                "updated you just need to enter the old details again:");
+                        Comic newComic = enterAllDetails();
+                        Update update = new Update(connection, newComic, oldComic);
+                    }
+                    // delete
+                    case "4" -> System.out.println("Not yet supported");
+                    // stop
+                    case "5" -> running = false;
+                    default -> System.out.println("Please enter a valid option.");
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
