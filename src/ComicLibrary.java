@@ -29,13 +29,18 @@ public class ComicLibrary {
                     System.out.println(option);
                 }
                 String option = reader.nextLine();
-                switch (option) {
-                    case "1" -> System.out.println("Not yet supported");
-                    case "2" -> System.out.println("noted");
-                    case "3" -> System.out.println("noted");
-                    case "4" -> System.out.println("Not yet supported");
-                    case "5" -> running = false;
-                    default -> System.out.println("Please enter a valid option.");
+                if ("1".equals(option)) {
+                    System.out.println("Not yet supported");
+                } else if ("2".equals(option)) {
+                    System.out.println("noted");
+                } else if ("3".equals(option)) {
+                    System.out.println("noted");
+                } else if ("4".equals(option)) {
+                    System.out.println("Not yet supported");
+                } else if ("5".equals(option)) {
+                    running = false;
+                } else {
+                    System.out.println("Please enter a valid option.");
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
