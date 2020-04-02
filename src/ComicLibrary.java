@@ -1,3 +1,4 @@
+import CRUD.Create;
 import CRUD.Read;
 import CRUD.Update;
 import Comic.Comic;
@@ -32,7 +33,11 @@ public class ComicLibrary {
                 String option = reader.nextLine();
                 switch (option) {
                     // create
-                    case "1" -> System.out.println("Not yet supported");
+                    case "1" -> {
+                        System.out.println("Enter all the details of the comic you want to add:");
+                        Comic comic = enterAllDetails();
+                        Create create = new Create(connection, comic);
+                    }
                     // read
                     case "2" -> {
                         System.out.print("Enter the name of the comic. Leave this empty and press Enter if" +
