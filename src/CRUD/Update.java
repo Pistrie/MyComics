@@ -24,13 +24,13 @@ public class Update {
             myStmt.setString(3, newComic.getGenre());
             myStmt.setInt(4, newComic.getPublication_year());
             myStmt.setString(5, newComic.getPublisher());
-            myStmt.setInt(6, newComic.getIsbn());
+            myStmt.setLong(6, newComic.getIsbn());
             myStmt.setString(7, oldComic.getTitle());
             myStmt.setInt(8, oldComic.getPublication_number());
             myStmt.setString(9, oldComic.getGenre());
             myStmt.setInt(10, oldComic.getPublication_year());
             myStmt.setString(11, oldComic.getPublisher());
-            myStmt.setInt(12, oldComic.getIsbn());
+            myStmt.setLong(12, oldComic.getIsbn());
 
             // execute sql query
             myStmt.executeUpdate();

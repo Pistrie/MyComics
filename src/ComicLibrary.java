@@ -1,5 +1,6 @@
 import CRUD.Read;
 import CRUD.Update;
+import Comic.Comic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,13 +33,17 @@ public class ComicLibrary {
                 if ("1".equals(option)) { // create
                     System.out.println("Not yet supported");
                 } else if ("2".equals(option)) { // read
-                    System.out.println("noted");
                     System.out.print("Enter the name of the comic. Leave this empty and press Enter if" +
                             " you want to see all comics: ");
                     String title = reader.nextLine();
                     Read read = new Read(connection, title);
                 } else if ("3".equals(option)) { // update
-                    System.out.println("noted");
+                    System.out.println("Enter all the details of the comic you want to update:");
+                    Comic oldComic = enterAllDetails();
+                    System.out.println("Enter all the new details. If some of the details don't need to be " +
+                            "updated you just need to enter the old details again:");
+                    Comic newComic = enterAllDetails();
+                    Update update = new Update(connection, newComic, oldComic);
                 } else if ("4".equals(option)) { // delete
                     System.out.println("Not yet supported");
                 } else if ("5".equals(option)) { // stop
@@ -50,6 +55,23 @@ public class ComicLibrary {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Comic enterAllDetails() {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Enter the title:");
+        String title = reader.nextLine();
+        System.out.println("Enter the publication number:");
+        int pn = Integer.parseInt(reader.nextLine());
+        System.out.println("Enter the genre:");
+        String genre = reader.nextLine();
+        System.out.println("Enter the publication year:");
+        int py = Integer.parseInt(reader.nextLine());
+        System.out.println("Enter the publisher:");
+        String pub = reader.nextLine();
+        System.out.println("Enter ISBN:");
+        long isbn = reader.nextLong();
+        return new Comic(title, pn, genre, py, pub, isbn);
     }
 
     public Connection getConnection(){

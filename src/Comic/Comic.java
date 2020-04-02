@@ -6,9 +6,9 @@ public class Comic {
     private String genre;
     private int publication_year;
     private String publisher;
-    private int isbn;
+    private long isbn;
 
-    public Comic(String title, int publication_number, String genre, int publication_year, String publisher, int isbn) {
+    public Comic(String title, int publication_number, String genre, int publication_year, String publisher, long isbn) {
         this.title = title;
         this.publication_number = publication_number;
         this.genre = genre;
@@ -37,7 +37,7 @@ public class Comic {
         return publisher;
     }
 
-    public int getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 }

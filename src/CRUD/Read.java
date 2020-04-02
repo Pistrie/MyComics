@@ -18,7 +18,6 @@ public class Read {
                 """);
 
             // set parameters
-            System.out.println("This is where the user would type the filter");
             if (filter.equals("")) {
                 myStmt.setNull(1, Types.NVARCHAR);
                 myStmt.setNull(2, Types.NVARCHAR);
